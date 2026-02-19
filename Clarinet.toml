@@ -1,24 +1,30 @@
-[project]
+[package]
 name = "bountypool"
-authors = []
-description = "Decentralized Bounty Board for Open Source Contributions"
+version = "1.1.0"
+description = "Decentralized gig economy bounty protocol on Stacks"
+authors = ["Stacks Builder <builder@stacks.dev>"]
 telemetry = false
-requirements = []
-boot_contracts = ["pox", "costs-v2", "bns"]
+cache_location = "./.clarinet"
 
-[contracts.bountypool]
-path = "contracts/bountypool.clar"
-depends_on = []
-
-[repl]
-costs_version = 2
-parser_version = 2
+[repl.costs_version]
+version = 2
 
 [repl.analysis]
 passes = ["check_checker"]
 
-[repl.analysis.check_checker]
-strict = false
-trusted_sender = false
-trusted_caller = false
-callee_filter = false
+[contracts.bountypool]
+path = "contracts/bountypool.clar"
+clarity_version = 2
+epoch = 2.4
+
+[devnet]
+name = "bountypool-devnet"
+bitcoin_node_p2p_port = 18444
+bitcoin_node_rpc_port = 18445
+stacks_node_rpc_port = 20443
+orchestrator_port = 20445
+postgres_port = 5432
+bitcoin_node_image_url = "quay.io/hirosystems/bitcoind:devnet"
+stacks_node_image_url = "quay.io/hirosystems/stacks-node:devnet"
+miner_mnemonic = "twice kind fence tip hidden tilt action foxglove nearly neglect lens virtual scene leader pizza away worth gate gift hobby fourteen coach gather"
+miner_derivation_path = "m/44'/5757'/0'/0/0"
